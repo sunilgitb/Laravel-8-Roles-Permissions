@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Contact;
+use App\Models\Application;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -133,4 +135,14 @@ class UserController extends Controller
         $role->delete();
         return redirect()->back()->withSuccess('Role deleted !!!');
     }
+
+    public function totalCount()
+{
+    $newUserCount = User:: count();
+    $bounceRate = 53;
+    $userRegistrations = Contact::count();
+    $uniqueVisitors = Apolication::count();
+
+    return view('admin.layouts.dashboard', compact('newUserCount', 'bounceRate', 'userRegistrations', 'uniqueVisitors'));
+}
 }

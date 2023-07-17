@@ -26,6 +26,7 @@
         <thead>
           <tr>
             <th>User Name</th>
+            <th>Email</th>
             <th>Role</th>
             <th>Actions</th>
 
@@ -37,6 +38,7 @@
                       @foreach($users as $user)
                       <tr class="hover:bg-grey-lighter">
                         <td class="py-4 px-6 border-b border-grey-light">{{ $user->name }}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{ $user->email }}</td>
                         <td class="py-4 px-6 border-b border-grey-light">
                             @foreach($user->roles as $role)
                               <span class="inline-flex items-center ">{{ $role->name }}</span>

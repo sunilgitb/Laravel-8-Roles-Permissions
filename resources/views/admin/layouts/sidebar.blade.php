@@ -1,22 +1,22 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
 <a href="{{ route('admin.dashboard') }}" class="brand-link">
-<img src="{{asset('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+<img src="{{asset('frontend/assets/img/fav-icon.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 <span class="brand-text font-weight-light">Dashboard</span>
 </a>
 
 <div class="sidebar">
 
-<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+<!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 <div class="image">
 <img src="{{asset('backend/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
 </div>
 <div class="info">
 <a href="#" class="d-block">Alexander Pierce</a>
 </div>
-</div>
+</div> -->
 
-<div class="form-inline">
+<!-- <div class="form-inline">
 <div class="input-group" data-widget="sidebar-search">
 <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
 <div class="input-group-append">
@@ -25,7 +25,7 @@
 </button>
 </div>
 </div>
-</div>
+</div> -->
 
 <nav class="mt-2">
 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -74,6 +74,27 @@ Starter Pages
 </a>
 @endcanany
 </li>
+</li>
+<li class="nav-item">
+<!-- <a href="{{url('products-list')}}" class="nav-link"> -->
+@canany('Contact access','Contact add','Contact edit','Contact delete')
+                <a class="nav-link" {{ Route::currentRouteNamed('admin.contacts.index') ? 'active' : '' }}"
+                    href="{{ route('admin.contacts.index')}}">
+<i class="far fa-circle nav-icon"></i>
+<p>Contacts</p>
+</a>
+@endcanany
+</li>
+<li class="nav-item">
+<!-- <a href="{{url('products-list')}}" class="nav-link"> -->
+@canany('Application access','Application add','Application edit','Application delete')
+                <a class="nav-link" {{ Route::currentRouteNamed('admin.contacts.index') ? 'active' : '' }}"
+                    href="{{ route('admin.applications.index')}}">
+<i class="far fa-circle nav-icon"></i>
+<p>Applications</p>
+</a>
+@endcanany
+</li>
 <li class="nav-item">
 <!-- <a href="{{url('add-product')}}" class="nav-link "> -->
 @canany('Post access','Post add','Post edit','Post delete')
@@ -94,8 +115,8 @@ Starter Pages
 </a>
 @endcan
 </li>
-<li class="nav-item">
-<!-- <a href="#" class="nav-link"> -->
+<!-- <li class="nav-item">
+
 
 @canany('Mail access','Mail edit')
                  <a class="nav-link {{ Route::currentRouteNamed('admin.mail.index') ? 'active' : '' }}"
@@ -104,7 +125,7 @@ Starter Pages
 <p>Settings</p>
 </a>
 @endcan
-</li>
+</li> -->
 </ul>
 </li>
 <!-- <a class="nav-link"> -->

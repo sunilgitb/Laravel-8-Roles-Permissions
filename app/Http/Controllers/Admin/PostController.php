@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Auth;
+use Str;
 class PostController extends Controller
 {
     /**
@@ -39,22 +40,68 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.new');
+        $posts= Post::all();
+        return view('post.new', ['posts'=>$posts]);
     }
 
+    public function posts(){
+        $posts = Post::select('id', 'title', 'description')->latest()->get();
+
+        foreach ($posts as $blog) {
+            $blog->description = Str::limit($blog->description, 150);
+        }
+    
+        return view('posts', compact('posts'));
+
+    }
+    public function showMore(){
+        $posts = Post::select('id', 'title', 'description')->latest()->get();
+
+        foreach ($posts as $blog) {
+            $blog->description = Str::limit($blog->description, 150);
+        }
+    
+        return view('blog', compact('posts'));
+    }
+
+    public function showBlog($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return view('frontend.blog.show', compact('post'));
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     $data= $request->all();
+    //     $data['user_id'] = Auth::user()->id;
+    //     $Post = Post::create($data);
+    //     return redirect()->back()->withSuccess('Post created !!!');
+    // }
     public function store(Request $request)
-    {
-        $data= $request->all();
-        $data['user_id'] = Auth::user()->id;
-        $Post = Post::create($data);
-        return redirect()->back()->withSuccess('Post created !!!');
-    }
+{
+    $data = $request->all();
+    $data['user_id'] = Auth::user()->id;
+
+    // Upload the image
+    $image = $request->file('image');
+    $imageName = time() . '.' . $image->getClientOriginalExtension();
+    $image->move(public_path('post/images'), $imageName);;
+
+    
+
+    $data['image'] = $imageName;
+
+    $Post = Post::create($data);
+
+    return redirect()->back()->withSuccess('Post created !!!');
+}
+
 
     /**
      * Display the specified resource.

@@ -25,6 +25,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+    Gate::define('Contact access', function ($user) {
+        // Logic to determine if the user has access to Contacts
+        return true; // Replace with your actual logic
+    });
+
         //
     }
 }

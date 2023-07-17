@@ -1,7 +1,8 @@
 <x-guest-layout>
-    <div class="font-sans min-h-screen antialiased bg-gray-900 pt-24 pb-5">
+    <div class="font-sans min-h-screen antialiased bg-blue-900 pt-24 pb-5">
         <div class="flex flex-col justify-center sm:w-96 sm:m-auto mx-5 mb-5 space-y-8">
-          <h1 class="font-bold text-center text-4xl text-yellow-500">Admin<span class="text-blue-500">Login</span></h1>
+          <img src="{{asset('frontend/assets/img/new-logo.png')}}" heigh="100px" width="200px" style="margin-left: 10px;">
+          <!-- <h1 class="font-bold text-center text-4xl text-yellow-500">Admin<span class="text-blue-500">Login</span></h1> -->
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
             <!-- Validation Errors -->
