@@ -99,4 +99,8 @@ class JobController extends Controller
         $job->delete();
         return redirect()->back()->withSuccess('Job deleted !!!');
     }
+
+    public function ViewUser(){
+        return view('users/view');
+    }
 }
