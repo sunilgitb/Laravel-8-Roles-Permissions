@@ -7,6 +7,7 @@
             <a href="/" class="breadcrumb__link">Home</a>
             <a href="#" class="breadcrumb__link">Blog</a>
             <a href="#" class="breadcrumb__link">Contact Us</a>
+            <a href="#" class="breadcrumb__link">Career</a>
             <a href="#" class="breadcrumb__link">How to enhance motivation for better business leads?</a>
         </section>
 
